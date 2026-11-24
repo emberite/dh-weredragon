@@ -1,0 +1,26 @@
+name: Feature request
+description: Suggest an idea or improvement for Weredragon.
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea! Please [search the open issues](https://github.com/emberite/dh-weredragon/issues) first: if someone already suggested it, add a comment or a 👍 there.
+  - type: textarea
+    id: goal
+    attributes:
+      label: What would you like to do at the table?
+      description: Describe what you want to happen, from the GM's or a player's point of view.
+    validations:
+      required: true
+  - type: textarea
+    id: rule
+    attributes:
+      label: Which rule or part of Reign of the Weredragon is it about?
+      description: A page reference in the book helps.
+  - type: textarea
+    id: today
+    attributes:
+      label: How do you handle it today?
+      description: What you do now without this feature, if anything.

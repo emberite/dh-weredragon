@@ -1,0 +1,72 @@
+name: Bug report
+description: Something in Weredragon doesn't work as it should.
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this! Please [search the open issues](https://github.com/emberite/dh-weredragon/issues) first: if it's already there, add a comment or a 👍 instead.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the problem. Screenshots help, and you can drag them into this box.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can the problem be made to happen again?
+      placeholder: |
+        1. Open …
+        2. Click …
+        3. See …
+    validations:
+      required: true
+  - type: input
+    id: module-version
+    attributes:
+      label: Weredragon version
+      description: Shown under Manage Modules.
+      placeholder: e.g. 1.2.3
+    validations:
+      required: true
+  - type: input
+    id: foundry-version
+    attributes:
+      label: Foundry VTT version
+      description: Shown at the bottom of the Foundry setup screen.
+      placeholder: e.g. 14.370
+    validations:
+      required: true
+  - type: input
+    id: system-version
+    attributes:
+      label: Daggerheart system version
+      placeholder: e.g. 2.12.0
+    validations:
+      required: true
+  - type: input
+    id: content-version
+    attributes:
+      label: "Daggerheart: Hope & Fear module version"
+      description: The official `daggerheart-hope-and-fear` module, if you have it installed.
+  - type: textarea
+    id: other-modules
+    attributes:
+      label: Other active modules
+      description: Does the problem still happen with only Weredragon and its requirements enabled? (Foundry's **Find the Culprit** under Manage Modules helps with this.)
+  - type: textarea
+    id: console
+    attributes:
+      label: Console errors
+      description: Press F12, open the **Console** tab, reproduce the problem and paste any red errors here as text.
+      render: text
