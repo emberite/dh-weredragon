@@ -68,3 +68,23 @@ jobs:
           files: |
             module.json
             module.zip
+
+      # Tells emberite.github.io to rebuild, so the site shows this release right away.
+      # Needs a SITE_DISPATCH_TOKEN secret; without it the site still picks the release up
+      # in its daily rebuild. Never fails the release.
+      - name: Rebuild the website
+        continue-on-error: true
+        env:
+          TOKEN: ${{ secrets.SITE_DISPATCH_TOKEN }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::notice::SITE_DISPATCH_TOKEN isn't set; the website updates in its daily rebuild."
+            exit 0
+          fi
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/emberite/emberite.github.io/dispatches \
+            -d "{\"event_type\":\"module-released\",\"client_payload\":{\"repo\":\"$REPO\",\"tag\":\"$TAG\"}}"
