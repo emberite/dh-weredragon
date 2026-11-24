@@ -2,6 +2,8 @@
 
 A Foundry VTT module for running the **Reign of the Weredragon** campaign frame from *Daggerheart: Hope & Fear*. The whole table builds Forlorne Lykona together with the **Villain Builder** and receives the Astromancer's **Night Sky Reading**. The GM gets compendiums for the weredragon queen, her weredrakes, the two curses and the curse-breaking Keys to Victory.
 
+![The Astromancer's revelations](docs/screenshots/07-sky-revelations.webp)
+
 ## Requirements
 
 - [**Foundry VTT**](https://foundryvtt.com/) v14
@@ -31,6 +33,13 @@ Build the weredragon queen together before character creation, from the 40 promp
 2. **At the table:** on their turn, a player picks a slip (or rolls), reads the prompt aloud and answers it. Anyone can ask a follow-up question, which the answering player can answer. The prompt can be **passed** to another player or **discarded**, in which case the same player draws again. *Ctrl+Enter* submits.
 3. **What Whelvia knows:** every answer collects in the side panel. When the slips run out (or the target number is answered), the GM writes everything to the journal **Forlorne Lykona, as the Table Tells It**. The GM can edit answers, finish early or go back to the table.
 
+| | |
+|---|---|
+| ![Choosing folded slips and seating the players](docs/screenshots/01-villain-setup.webp) | ![Folded prompt slips scattered on the table](docs/screenshots/02-villain-table.webp) |
+| **Setup:** folded slips or the roll table, and who sits where. | **The table:** it's Isolde's turn to pick a slip. |
+| ![A player answering a prompt while another asks a follow-up](docs/screenshots/03-villain-prompt.webp) | ![The finished portrait of the weredragon queen](docs/screenshots/04-villain-done.webp) |
+| **A prompt:** Gravel answers while Isolde asks a follow-up. | **Done:** eight answers, ready to write to a journal. |
+
 ### Night Sky Reading (Heaven's Eye)
 
 The Astromancer's reading of the five revelations.
@@ -43,7 +52,14 @@ The Astromancer's reading of the five revelations.
    - **Fifth revelation:** a checklist (secret, ally, both keys). With all four, Forlorne appears alone, without Feed on Fear and Terrifying.
    - The Keys to Victory link to their items: the system's SRD equipment, or this module's items for Lady Lavender's Longsword, the Zoetrope and the Stag Knight's Bramble Sword.
 
+| | |
+|---|---|
+| ![Players rolling the stars](docs/screenshots/05-sky-rolling.webp) | ![The GM's dice placed in the table, joined into a constellation](docs/screenshots/06-sky-placed.webp) |
+| **Roll the stars:** three of five dice rolled by the players. | **Read the sky:** the GM placed every die; the chosen cells form a constellation. |
+
 ### Compendiums
+
+![Forlorne Lykona's Dragon Form](docs/screenshots/08-forlorne.webp)
 
 Under **Reign of the Weredragon** in the compendium sidebar, behind the campaign frame's cover art:
 
@@ -70,3 +86,21 @@ npm run build   # writes src/<pack>/*.json and compiles packs/
 ```
 
 Document ids are derived from names, so rebuilding keeps every UUID stable. Stop Foundry (or disable the module) before rebuilding, because Foundry locks the packs while the module is active.
+
+- `scripts/state.mjs` holds the rules of both apps as pure reducers with no Foundry dependencies; the active GM applies every change.
+- Releases are built by `.github/workflows/release.yml`. Publish a GitHub release tagged `vX.Y.Z`, and the workflow stamps the version and attaches `module.json` and `module.zip`.
+
+## License
+
+The Weredragon module (its code, templates, styles and original content) is released under the [MIT License](LICENSE). © 2026 emberite.
+
+The MIT License doesn't cover Daggerheart material. The Reign of the Weredragon campaign frame, Forlorne Lykona, the weredrake, the Villain Builder prompts, the Night Sky Reading table and the Keys to Victory are from *Daggerheart: Hope & Fear* by Darrington Press. The [Daggerheart: Hope & Fear](https://www.foundryvtt.store/products/daggerheart-hope-and-fear) module's art and rulebook pages are loaded from that module at runtime and are not included in this repository; the screenshots show it in use.
+
+This product includes materials from the
+Daggerheart System Reference Document
+2.0, © Critical Role, LLC. under the terms of
+the Darrington Press Community Gaming
+(DPCGL) License. More information can be
+found at
+https://www.daggerheart.com. There are
+no previous modifications by others.

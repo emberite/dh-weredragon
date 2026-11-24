@@ -1533,3 +1533,15 @@
   display: block;
   margin-top: 2px;
 }
+.wd-night-sky .ns-cell span {
+  -webkit-line-clamp: 2;
+}
+.wd-night-sky .ns-cell.chosen span {
+  -webkit-line-clamp: 4;
+}
+.wd-night-sky .ns-cell {
+  padding: 6px 8px 24px;
+}
+.wd-night-sky .ns-card-entry a.content-link {
+  white-space: normal;
+}
