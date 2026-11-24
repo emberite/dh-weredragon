@@ -1,0 +1,786 @@
+{
+  "_id": "dhwdForlorneDrgn",
+  "name": "Forlorne Lykona (Dragon Form)",
+  "type": "adversary",
+  "img": "modules/daggerheart-hope-and-fear/assets/art/book/weredragon-forlornedragon.webp",
+  "system": {
+    "difficulty": 20,
+    "damageThresholds": {
+      "major": 40,
+      "severe": 80
+    },
+    "resources": {
+      "hitPoints": {
+        "value": 0,
+        "max": 11
+      },
+      "stress": {
+        "value": 0,
+        "max": 8
+      }
+    },
+    "motivesAndTactics": "Ascend to the stars, learn new magic, rule through terror, transform",
+    "resistance": {
+      "physical": {
+        "resistance": false,
+        "immunity": false,
+        "reduction": 0
+      },
+      "magical": {
+        "resistance": false,
+        "immunity": false,
+        "reduction": 0
+      }
+    },
+    "type": "solo",
+    "notes": "",
+    "experiences": {
+      "edCz3LlbW1mf2Pu0": {
+        "name": "Arcane Knowledge",
+        "value": 5,
+        "description": ""
+      },
+      "LUanbR2LDhHRfEmu": {
+        "name": "Death from Above",
+        "value": 5,
+        "description": ""
+      }
+    },
+    "tier": 4,
+    "description": "<p>Statuesque in her faun form, grotesquely beautiful in her purple-scaled dragon form, the weredragon queen uses magic to defeat all who threaten her rule.</p><p><em>Dragon Form:</em> This form reflects Forlorne’s mercilessness and intolerance as she uses the shape of the once-peaceful dragon Sazanthe to drive fear into her people. While in dragon form, Forlorne is rapacious and terrifying, having cast off the trappings of civility and regality to indulge her primal cravings.</p>",
+    "attack": {
+      "name": "Claws and Teeth",
+      "range": "close",
+      "roll": {
+        "bonus": 8,
+        "type": "attack",
+        "trait": null,
+        "difficulty": null,
+        "advState": "neutral",
+        "diceRolling": {
+          "multiplier": "prof",
+          "flatMultiplier": 1,
+          "dice": "d6",
+          "compare": null,
+          "treshold": null
+        },
+        "useDefault": false
+      },
+      "damage": {
+        "main": {
+          "value": {
+            "custom": {
+              "enabled": false,
+              "formula": ""
+            },
+            "multiplier": "flat",
+            "flatMultiplier": 4,
+            "dice": "d10",
+            "bonus": 10
+          },
+          "applyTo": "hitPoints",
+          "type": [
+            "physical"
+          ],
+          "base": false,
+          "resultBased": false,
+          "valueAlt": {
+            "multiplier": "prof",
+            "flatMultiplier": 1,
+            "dice": "d6",
+            "bonus": null,
+            "custom": {
+              "enabled": false,
+              "formula": ""
+            }
+          },
+          "includeBase": false,
+          "direct": false,
+          "fullRestore": false,
+          "itemId": null
+        },
+        "resources": {}
+      },
+      "_id": "Slm3Trt54Q4bkTwT",
+      "systemPath": "attack",
+      "type": "attack",
+      "description": "",
+      "img": "icons/creatures/abilities/mouth-teeth-rows-needles-purple.webp",
+      "chatDisplay": false,
+      "actionType": "action",
+      "cost": [],
+      "uses": {
+        "value": null,
+        "max": null,
+        "recovery": null,
+        "consumeOnSuccess": false
+      },
+      "target": {
+        "type": "any",
+        "amount": 1
+      },
+      "effects": [],
+      "save": {
+        "trait": null,
+        "difficulty": null,
+        "damageMod": "none"
+      },
+      "baseAction": true,
+      "originItem": {
+        "type": "itemCollection"
+      },
+      "triggers": [],
+      "areas": []
+    },
+    "attribution": {
+      "source": "Daggerheart: Hope & Fear",
+      "page": null,
+      "artist": ""
+    },
+    "size": "huge",
+    "advantageSources": [],
+    "disadvantageSources": [],
+    "criticalThreshold": 20,
+    "typeData": null
+  },
+  "prototypeToken": {
+    "name": "Forlorne Lykona",
+    "displayName": 20,
+    "displayBars": 20,
+    "actorLink": false,
+    "width": 3,
+    "height": 3,
+    "disposition": -1,
+    "texture": {
+      "src": "modules/daggerheart-hope-and-fear/assets/art/book/weredragon-forlornedragon.webp",
+      "fit": "contain",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "ring": {
+      "enabled": false
+    }
+  },
+  "items": [
+    {
+      "_id": "jfWgWZKKaxWYc6L0",
+      "name": "Relentless (4)",
+      "type": "feature",
+      "img": "icons/magic/unholy/silhouette-evil-horned-giant.webp",
+      "system": {
+        "description": "<p>The @Lookup[@name] can be spotlighted up to four times per GM turn. Spend Fear as usual to spotlight them.</p>",
+        "featureForm": "passive",
+        "actions": {
+          "7L8jAhD5Kxr3jB8V": {
+            "_id": "7L8jAhD5Kxr3jB8V",
+            "type": "effect",
+            "systemPath": "actions",
+            "name": "Spotlight: Relentless",
+            "img": "icons/magic/unholy/silhouette-evil-horned-giant.webp",
+            "description": "",
+            "chatDisplay": false,
+            "actionType": "passive",
+            "cost": [
+              {
+                "scalable": false,
+                "key": "fear",
+                "value": 1,
+                "step": null,
+                "itemId": null,
+                "consumeOnSuccess": false
+              }
+            ],
+            "uses": {
+              "value": 0,
+              "max": "3",
+              "recovery": null,
+              "consumeOnSuccess": false
+            },
+            "target": {
+              "type": "any",
+              "amount": null
+            },
+            "effects": [],
+            "range": "",
+            "areas": [],
+            "baseAction": false,
+            "originItem": {
+              "type": "itemCollection"
+            },
+            "triggers": []
+          }
+        },
+        "resource": null,
+        "attribution": {},
+        "gmNotes": "",
+        "granter": null,
+        "actorResources": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "daggerheart",
+        "systemVersion": "2.12.7",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "_key": "!actors.items!dhwdForlorneDrgn.jfWgWZKKaxWYc6L0"
+    },
+    {
+      "_id": "5TLGGazDlK4CD5Pl",
+      "name": "Transform",
+      "type": "feature",
+      "img": "icons/magic/control/silhouette-grow-shrink-tan.webp",
+      "system": {
+        "description": "<p><strong>Mark a Stress</strong> to have Forlorne shift between her Dragon Form and Faun Form. While she embodies a form, she uses its statistics and features.</p>",
+        "featureForm": "action",
+        "actions": {
+          "MoOMRO1ppn1Ud6Ad": {
+            "_id": "MoOMRO1ppn1Ud6Ad",
+            "type": "effect",
+            "systemPath": "actions",
+            "name": "Transform",
+            "img": "icons/magic/control/silhouette-grow-shrink-tan.webp",
+            "description": "",
+            "chatDisplay": true,
+            "actionType": "action",
+            "cost": [
+              {
+                "scalable": false,
+                "key": "stress",
+                "value": 1,
+                "step": null,
+                "itemId": null,
+                "consumeOnSuccess": false
+              }
+            ],
+            "uses": {
+              "value": null,
+              "max": "",
+              "recovery": null,
+              "consumeOnSuccess": false
+            },
+            "target": {
+              "type": "any",
+              "amount": null
+            },
+            "effects": [],
+            "range": "",
+            "areas": [],
+            "baseAction": false,
+            "originItem": {
+              "type": "itemCollection"
+            },
+            "triggers": []
+          }
+        },
+        "resource": null,
+        "attribution": {},
+        "gmNotes": "",
+        "granter": null,
+        "actorResources": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "dh-weredragon": {
+          "transform": true
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "daggerheart",
+        "systemVersion": "2.12.7",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "_key": "!actors.items!dhwdForlorneDrgn.5TLGGazDlK4CD5Pl"
+    },
+    {
+      "_id": "K6szyXe2t5Yxe3W3",
+      "name": "Feed on Fear",
+      "type": "feature",
+      "img": "icons/magic/control/fear-fright-mask-orange.webp",
+      "system": {
+        "description": "<p>When a PC within Close range fails with Fear, Forlorne can clear a HP or a Stress.</p>",
+        "featureForm": "reaction",
+        "actions": {},
+        "resource": null,
+        "attribution": {},
+        "gmNotes": "",
+        "granter": null,
+        "actorResources": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "daggerheart",
+        "systemVersion": "2.12.7",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "_key": "!actors.items!dhwdForlorneDrgn.K6szyXe2t5Yxe3W3"
+    },
+    {
+      "_id": "Udc5EGE76yVtG0h2",
+      "name": "Flying",
+      "type": "feature",
+      "img": "icons/commodities/biological/wing-lizard-brown.webp",
+      "system": {
+        "description": "<p>While flying, the @Lookup[@name] gains a +3 bonus to their Difficulty.</p>",
+        "featureForm": "passive",
+        "actions": {},
+        "resource": null,
+        "attribution": {},
+        "gmNotes": "",
+        "granter": null,
+        "actorResources": []
+      },
+      "effects": [
+        {
+          "_id": "EQhVOo0LtuVCWFZi",
+          "name": "Flying",
+          "img": "icons/commodities/biological/wing-lizard-brown.webp",
+          "type": "base",
+          "transfer": true,
+          "disabled": false,
+          "statuses": [],
+          "description": "<p>While flying, the @Lookup[@name] gains a +3 bonus to their Difficulty.</p>",
+          "tint": "#ffffff",
+          "showIcon": 1,
+          "sort": 0,
+          "flags": {},
+          "system": {
+            "changes": [
+              {
+                "key": "system.difficulty",
+                "value": 3,
+                "priority": null,
+                "type": "add",
+                "phase": "initial"
+              }
+            ],
+            "duration": {
+              "description": ""
+            },
+            "rangeDependence": null,
+            "stacking": null,
+            "targetDispositions": [],
+            "conditionals": []
+          },
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "start": null,
+          "folder": null,
+          "_stats": {
+            "coreVersion": "14.370",
+            "systemId": "daggerheart",
+            "systemVersion": "2.12.7",
+            "createdTime": null,
+            "modifiedTime": null,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null
+          },
+          "_key": "!actors.items.effects!dhwdForlorneDrgn.Udc5EGE76yVtG0h2.EQhVOo0LtuVCWFZi"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "daggerheart",
+        "systemVersion": "2.12.7",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "_key": "!actors.items!dhwdForlorneDrgn.Udc5EGE76yVtG0h2"
+    },
+    {
+      "_id": "2jD0TIGspnxZYXMR",
+      "name": "Terrifying",
+      "type": "feature",
+      "img": "icons/magic/death/skull-energy-light-purple.webp",
+      "system": {
+        "description": "<p>When the @Lookup[@name] makes a successful attack, all PCs within Far range lose a Hope and you gain a Fear.</p>",
+        "featureForm": "passive",
+        "actions": {
+          "hZ1r3CgDoBjg3QLf": {
+            "_id": "hZ1r3CgDoBjg3QLf",
+            "type": "damage",
+            "systemPath": "actions",
+            "name": "",
+            "description": "",
+            "chatDisplay": true,
+            "actionType": "action",
+            "cost": [],
+            "uses": {
+              "value": null,
+              "max": "",
+              "recovery": null,
+              "consumeOnSuccess": false
+            },
+            "target": {
+              "type": "any",
+              "amount": null
+            },
+            "effects": [],
+            "range": "",
+            "areas": [
+              {
+                "name": "Terrifying",
+                "type": "placed",
+                "shape": "emanation",
+                "size": "far",
+                "hasHole": false,
+                "effects": []
+              }
+            ],
+            "baseAction": false,
+            "originItem": {
+              "type": "itemCollection"
+            },
+            "triggers": [],
+            "damage": {
+              "main": null,
+              "resources": {
+                "hope": {
+                  "base": false,
+                  "applyTo": "hope",
+                  "resultBased": false,
+                  "fullRestore": false,
+                  "value": {
+                    "multiplier": "flat",
+                    "flatMultiplier": 0,
+                    "dice": "d6",
+                    "bonus": 1,
+                    "custom": {
+                      "enabled": false,
+                      "formula": ""
+                    }
+                  },
+                  "valueAlt": null,
+                  "itemId": null
+                }
+              }
+            }
+          }
+        },
+        "resource": null,
+        "attribution": {},
+        "gmNotes": "",
+        "granter": null,
+        "actorResources": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "daggerheart",
+        "systemVersion": "2.12.7",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "_key": "!actors.items!dhwdForlorneDrgn.2jD0TIGspnxZYXMR"
+    },
+    {
+      "_id": "eKjoiqT1TdavtyVD",
+      "name": "Breath Weapon",
+      "type": "feature",
+      "img": "icons/creatures/abilities/dragon-breath-purple.webp",
+      "system": {
+        "description": "<p><strong>Spend 2 Fear</strong> to have Forlorne exhale a cloud of magical energy, filling an area within Close range. Each target in that area must make a Presence Reaction Roll. On a failure, they must mark 3 Stress or gain the <em>Weredrake Curse</em>. While under the <em>Weredrake Curse</em>, the target drops their equipment and loot and transforms into a @UUID[Compendium.dh-weredragon.weredragon-adversaries.Actor.dhwdWeredrake000]{Weredrake} adversary under the GM’s control. After this condition is cleared, the target retains no memory of their time as a weredrake.</p>",
+        "featureForm": "action",
+        "actions": {
+          "1m3KtHhAa5x6oRnS": {
+            "_id": "1m3KtHhAa5x6oRnS",
+            "type": "attack",
+            "systemPath": "actions",
+            "name": "Breath Weapon",
+            "img": "icons/creatures/abilities/dragon-breath-purple.webp",
+            "description": "",
+            "chatDisplay": true,
+            "actionType": "action",
+            "cost": [
+              {
+                "scalable": false,
+                "key": "fear",
+                "value": 2,
+                "step": null,
+                "itemId": null,
+                "consumeOnSuccess": false
+              }
+            ],
+            "uses": {
+              "value": null,
+              "max": "",
+              "recovery": null,
+              "consumeOnSuccess": false
+            },
+            "target": {
+              "type": "any",
+              "amount": null
+            },
+            "effects": [
+              {
+                "_id": "WITDhKZ7z49sQTCW",
+                "onSave": false
+              }
+            ],
+            "range": "close",
+            "areas": [],
+            "baseAction": false,
+            "originItem": {
+              "type": "itemCollection"
+            },
+            "triggers": [],
+            "roll": {
+              "type": null,
+              "trait": null,
+              "difficulty": null,
+              "bonus": null,
+              "advState": "neutral",
+              "diceRolling": {
+                "multiplier": "prof",
+                "flatMultiplier": 1,
+                "dice": "d6",
+                "compare": null,
+                "treshold": null
+              },
+              "useDefault": false
+            },
+            "save": {
+              "trait": "presence",
+              "difficulty": null,
+              "damageMod": "none"
+            }
+          }
+        },
+        "resource": null,
+        "attribution": {},
+        "gmNotes": "",
+        "granter": null,
+        "actorResources": []
+      },
+      "effects": [
+        {
+          "_id": "WITDhKZ7z49sQTCW",
+          "name": "Weredrake Curse",
+          "img": "icons/creatures/abilities/dragon-breath-purple.webp",
+          "type": "base",
+          "transfer": false,
+          "disabled": false,
+          "statuses": [
+            "weredrakeCurse"
+          ],
+          "description": "",
+          "tint": "#ffffff",
+          "showIcon": 1,
+          "sort": 0,
+          "flags": {},
+          "system": {
+            "changes": [],
+            "duration": {
+              "description": ""
+            },
+            "rangeDependence": null,
+            "stacking": null,
+            "targetDispositions": [],
+            "conditionals": []
+          },
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "start": null,
+          "folder": null,
+          "_stats": {
+            "coreVersion": "14.370",
+            "systemId": "daggerheart",
+            "systemVersion": "2.12.7",
+            "createdTime": null,
+            "modifiedTime": null,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null
+          },
+          "_key": "!actors.items.effects!dhwdForlorneDrgn.eKjoiqT1TdavtyVD.WITDhKZ7z49sQTCW"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "daggerheart",
+        "systemVersion": "2.12.7",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "_key": "!actors.items!dhwdForlorneDrgn.eKjoiqT1TdavtyVD"
+    },
+    {
+      "_id": "O7KnkLb1bVVT26CR",
+      "name": "Tail Swipe",
+      "type": "feature",
+      "img": "icons/creatures/abilities/tail-swipe-green.webp",
+      "system": {
+        "description": "<p>When Forlorne marks 1 or more HP from an attack within Very Close range, you can <strong>mark a Stress</strong> to deal <strong>2d10+10</strong> physical damage to all creatures within that range.</p>",
+        "featureForm": "reaction",
+        "actions": {
+          "nF0hLI8GmJKMAT16": {
+            "_id": "nF0hLI8GmJKMAT16",
+            "type": "damage",
+            "systemPath": "actions",
+            "name": "Tail Swipe",
+            "img": "icons/creatures/abilities/tail-swipe-green.webp",
+            "description": "",
+            "chatDisplay": true,
+            "actionType": "reaction",
+            "cost": [
+              {
+                "scalable": false,
+                "key": "stress",
+                "value": 1,
+                "step": null,
+                "itemId": null,
+                "consumeOnSuccess": false
+              }
+            ],
+            "uses": {
+              "value": null,
+              "max": "",
+              "recovery": null,
+              "consumeOnSuccess": false
+            },
+            "target": {
+              "type": "any",
+              "amount": null
+            },
+            "effects": [],
+            "range": "veryClose",
+            "areas": [
+              {
+                "name": "Tail Swipe",
+                "type": "placed",
+                "shape": "emanation",
+                "size": "veryClose",
+                "hasHole": false,
+                "effects": []
+              }
+            ],
+            "baseAction": false,
+            "originItem": {
+              "type": "itemCollection"
+            },
+            "triggers": [],
+            "damage": {
+              "main": {
+                "value": {
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "multiplier": "flat",
+                  "flatMultiplier": 2,
+                  "dice": "d10",
+                  "bonus": 10
+                },
+                "applyTo": "hitPoints",
+                "type": [
+                  "physical"
+                ],
+                "base": false,
+                "resultBased": false,
+                "valueAlt": null,
+                "includeBase": false,
+                "direct": false,
+                "fullRestore": false,
+                "itemId": null
+              },
+              "resources": {}
+            }
+          }
+        },
+        "resource": null,
+        "attribution": {},
+        "gmNotes": "",
+        "granter": null,
+        "actorResources": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "daggerheart",
+        "systemVersion": "2.12.7",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "_key": "!actors.items!dhwdForlorneDrgn.O7KnkLb1bVVT26CR"
+    }
+  ],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "dh-weredragon": {
+      "form": "dragon"
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "daggerheart",
+    "systemVersion": "2.12.7",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "_key": "!actors!dhwdForlorneDrgn"
+}

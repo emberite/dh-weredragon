@@ -1,0 +1,70 @@
+name: Release
+
+# Publish a GitHub release with a tag like "v0.1.0". This workflow stamps that version into
+# module.json, zips the module and attaches module.json + module.zip to the release, so
+#   manifest: https://github.com/emberite/dh-weredragon/releases/latest/download/module.json
+# always points at the newest version.
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read version from tag
+        id: version
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="${TAG#v}"
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::Release tag '$TAG' is not a version like v1.2.3"
+            exit 1
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Stamp module.json
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          TAG: ${{ steps.version.outputs.tag }}
+          REPO: ${{ github.repository }}
+        run: |
+          jq --arg v "$VERSION" \
+             --arg manifest "https://github.com/$REPO/releases/latest/download/module.json" \
+             --arg download "https://github.com/$REPO/releases/download/$TAG/module.zip" \
+             '.version = $v | .manifest = $manifest | .download = $download' \
+             module.json > module.json.tmp
+          mv module.json.tmp module.json
+          jq '{id, version, manifest, download}' module.json
+
+      - name: Check packs and files
+        run: |
+          for d in packs/*/; do
+            test -f "$d/CURRENT" || { echo "::error::$d is not a LevelDB pack"; exit 1; }
+          done
+          for f in $(jq -r '.esmodules[], .languages[].path' module.json); do
+            test -f "$f" || { echo "::error::missing $f"; exit 1; }
+          done
+
+      - name: Zip module
+        run: |
+          FILES="module.json README.md scripts styles templates lang packs"
+          if [ -f LICENSE ]; then FILES="$FILES LICENSE"; fi
+          zip -r module.zip $FILES -x "packs/*/LOCK" "packs/*/LOG*"
+          unzip -l module.zip
+
+      - name: Attach to release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          files: |
+            module.json
+            module.zip

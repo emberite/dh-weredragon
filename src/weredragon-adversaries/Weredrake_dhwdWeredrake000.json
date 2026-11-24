@@ -1,0 +1,274 @@
+{
+  "_id": "dhwdWeredrake000",
+  "name": "Weredrake",
+  "type": "adversary",
+  "img": "modules/daggerheart-hope-and-fear/assets/art/book/weredragon-weredrake-12-10-25.webp",
+  "system": {
+    "difficulty": 12,
+    "damageThresholds": {
+      "major": 8,
+      "severe": 14
+    },
+    "resources": {
+      "hitPoints": {
+        "value": 0,
+        "max": 5
+      },
+      "stress": {
+        "value": 0,
+        "max": 2
+      }
+    },
+    "motivesAndTactics": "Hunger for flesh, hunt in small packs",
+    "resistance": {
+      "physical": {
+        "resistance": false,
+        "immunity": false,
+        "reduction": 0
+      },
+      "magical": {
+        "resistance": false,
+        "immunity": false,
+        "reduction": 0
+      }
+    },
+    "type": "standard",
+    "notes": "<p>A weredrake can assume their original ancestry’s form. When they do, they retain the terrifying claws and teeth of their new draconic form. They typically use this form as a ruse to lure prey close before attacking.</p><p>As the players move up in tier, adjust the weredrake’s statistics accordingly (see “Improvising Adversaries” in the core rulebook).</p>",
+    "experiences": {
+      "KRSQSYHU7rxGri6O": {
+        "name": "Pack Hunter",
+        "value": 3,
+        "description": ""
+      }
+    },
+    "tier": 1,
+    "description": "<p>A person transformed into a wingless draconic predator by a weredragon’s breath weapon.</p><p>A weredrake looks like a wingless, quadrupedal dragon of a similar size to the person they once were, but they can’t speak and don’t retain that person’s knowledge or memories. Elements of the weredrake’s former ancestry might be discernible in the creature’s form; for example, a clank transformed into a weredrake might retain a mechanical appearance, while a faerie weredrake might have a carapace instead of scales.</p>",
+    "attack": {
+      "name": "Claws & Teeth",
+      "range": "melee",
+      "roll": {
+        "bonus": 2,
+        "type": "attack",
+        "trait": null,
+        "difficulty": null,
+        "advState": "neutral",
+        "diceRolling": {
+          "multiplier": "prof",
+          "flatMultiplier": 1,
+          "dice": "d6",
+          "compare": null,
+          "treshold": null
+        },
+        "useDefault": false
+      },
+      "damage": {
+        "main": {
+          "value": {
+            "custom": {
+              "enabled": false,
+              "formula": ""
+            },
+            "multiplier": "flat",
+            "flatMultiplier": 1,
+            "dice": "d8",
+            "bonus": 3
+          },
+          "applyTo": "hitPoints",
+          "type": [
+            "physical"
+          ],
+          "base": false,
+          "resultBased": false,
+          "valueAlt": {
+            "multiplier": "prof",
+            "flatMultiplier": 1,
+            "dice": "d6",
+            "bonus": null,
+            "custom": {
+              "enabled": false,
+              "formula": ""
+            }
+          },
+          "includeBase": false,
+          "direct": false,
+          "fullRestore": false,
+          "itemId": null
+        },
+        "resources": {}
+      },
+      "_id": "2eGGudo3XISSsNVb",
+      "systemPath": "attack",
+      "type": "attack",
+      "description": "",
+      "img": "icons/creatures/claws/claw-hooked-purple.webp",
+      "chatDisplay": false,
+      "actionType": "action",
+      "cost": [],
+      "uses": {
+        "value": null,
+        "max": null,
+        "recovery": null,
+        "consumeOnSuccess": false
+      },
+      "target": {
+        "type": "any",
+        "amount": 1
+      },
+      "effects": [],
+      "save": {
+        "trait": null,
+        "difficulty": null,
+        "damageMod": "none"
+      },
+      "baseAction": true,
+      "originItem": {
+        "type": "itemCollection"
+      },
+      "triggers": [],
+      "areas": []
+    },
+    "attribution": {
+      "source": "Daggerheart: Hope & Fear",
+      "page": null,
+      "artist": ""
+    },
+    "size": "medium",
+    "advantageSources": [],
+    "disadvantageSources": [],
+    "criticalThreshold": 20,
+    "typeData": null
+  },
+  "prototypeToken": {
+    "name": "Weredrake",
+    "displayName": 20,
+    "displayBars": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "texture": {
+      "src": "modules/daggerheart-hope-and-fear/assets/art/book/weredragon-weredrake-12-10-25.webp",
+      "fit": "contain",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "ring": {
+      "enabled": false
+    }
+  },
+  "items": [
+    {
+      "_id": "h50EsXMQ4UvY9OcF",
+      "name": "Climber",
+      "type": "feature",
+      "img": "icons/creatures/abilities/paw-print-pair-purple.webp",
+      "system": {
+        "description": "<p>The Weredrake climbs as easily as it runs.</p>",
+        "featureForm": "passive",
+        "actions": {},
+        "resource": null,
+        "attribution": {},
+        "gmNotes": "",
+        "granter": null,
+        "actorResources": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "daggerheart",
+        "systemVersion": "2.12.7",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "_key": "!actors.items!dhwdWeredrake000.h50EsXMQ4UvY9OcF"
+    },
+    {
+      "_id": "veaNBEOnK4nn93tD",
+      "name": "Pack Tactics",
+      "type": "feature",
+      "img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
+      "system": {
+        "description": "<p>If the Weredrake makes a successful standard attack and another Weredrake is within Melee range of the target, deal <strong>1d8+6</strong> physical damage instead of its standard damage and gain a Fear.</p>",
+        "featureForm": "passive",
+        "actions": {},
+        "resource": null,
+        "attribution": {},
+        "gmNotes": "",
+        "granter": null,
+        "actorResources": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "daggerheart",
+        "systemVersion": "2.12.7",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "_key": "!actors.items!dhwdWeredrake000.veaNBEOnK4nn93tD"
+    },
+    {
+      "_id": "2AAJ3erdELQfSg3I",
+      "name": "Innocent Guise",
+      "type": "feature",
+      "img": "icons/magic/control/silhouette-hold-change-green.webp",
+      "system": {
+        "description": "<p>The Weredrake magically assumes the form of the person it was before its transformation but retains its claws and teeth. This form lasts until it dies or uses this feature again to revert to its draconic form.</p>",
+        "featureForm": "action",
+        "actions": {},
+        "resource": null,
+        "attribution": {},
+        "gmNotes": "",
+        "granter": null,
+        "actorResources": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "daggerheart",
+        "systemVersion": "2.12.7",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "_key": "!actors.items!dhwdWeredrake000.2AAJ3erdELQfSg3I"
+    }
+  ],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "daggerheart",
+    "systemVersion": "2.12.7",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "_key": "!actors!dhwdWeredrake000"
+}

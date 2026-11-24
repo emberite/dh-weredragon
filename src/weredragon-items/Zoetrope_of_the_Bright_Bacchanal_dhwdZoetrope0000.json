@@ -1,0 +1,71 @@
+{
+  "_id": "dhwdZoetrope0000",
+  "name": "Zoetrope of the Bright Bacchanal",
+  "type": "loot",
+  "img": "modules/daggerheart-hope-and-fear/assets/art/book/weredragon-item-zoetrope.webp",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "dh-weredragon": {
+      "curseBreaker": {
+        "action": "dhwdZoetropeTurn"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "daggerheart",
+    "systemVersion": "2.12.7",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "_key": "!items!dhwdZoetrope0000",
+  "system": {
+    "description": "<p><em>Unless you decide it was taken elsewhere, a magical trinket lies buried amid the ashes and timbers of the Lykona cottage at Witch’s End, undamaged by fire and the passage of time. Made of copper, the item is a hollow cylinder with dancing fauns cut out of it.</em></p><p>When you place a candle in this zoetrope’s cylinder and turn the metal key attached to the base counterclockwise, the cylinder rotates, casting a luminous parade of dancing fauns on nearby surfaces. While the lit zoetrope turns, it clears all magical curses on creatures within Close range.</p><p>Key to Victory 1 of the Astromancer’s reading (roll 6): when Forlorne appears, a PC holding it gains 1d4 Hope.</p>",
+    "quantity": 1,
+    "actions": {
+      "dhwdZoetropeTurn": {
+        "_id": "dhwdZoetropeTurn",
+        "type": "effect",
+        "systemPath": "actions",
+        "name": "Light the Zoetrope",
+        "img": "icons/magic/light/light-candles-lit-white.webp",
+        "description": "",
+        "chatDisplay": true,
+        "actionType": "action",
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "target": {
+          "type": "any",
+          "amount": null
+        },
+        "effects": [],
+        "range": "close",
+        "areas": [],
+        "baseAction": false,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "triggers": []
+      }
+    },
+    "attribution": {
+      "source": "Daggerheart: Hope & Fear",
+      "page": null,
+      "artist": ""
+    },
+    "gmNotes": ""
+  }
+}

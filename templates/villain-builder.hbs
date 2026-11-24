@@ -1,0 +1,221 @@
+<div class="wd-shell vb-shell phase-{{phase}}">
+    <aside class="wd-side vb-side">
+        <figure class="wd-portrait vb-portrait">
+            <img src="{{art.faun}}" alt="" />
+            <figcaption>
+                <span class="wd-kicker">{{localize "DHWD.Villain.Kicker"}}</span>
+                <h2>{{localize "DHWD.Villain.Queen"}}</h2>
+            </figcaption>
+        </figure>
+
+        {{#unless (eq phase "setup")}}
+        <div class="vb-progress" style="--p: {{progress}}">
+            <div class="vb-ring"><span><strong>{{answered}}</strong>/{{goal}}</span></div>
+            <p>{{localize "DHWD.Villain.Progress" n=answered}}</p>
+        </div>
+
+        <section class="vb-order">
+            <header class="wd-heading"><i class="fa-solid fa-chair"></i> {{localize "DHWD.Villain.Seating"}}</header>
+            <ol>
+                {{#each order}}
+                <li class="{{#if isTurn}}turn{{/if}} {{#unless active}}away{{/unless}}" style="--who: {{color}}">
+                    <img src="{{avatar}}" alt="" /><span>{{name}}</span>{{#if isTurn}}<i class="fa-solid fa-hand-point-left"></i>{{/if}}
+                </li>
+                {{/each}}
+            </ol>
+            {{#if isGM}}{{#if (eq phase "play")}}
+            <div class="vb-order-tools">
+                <button type="button" class="wd-link" data-action="skipTurn" {{#if current}}disabled{{/if}}><i class="fa-solid fa-forward"></i> {{localize "DHWD.Villain.SkipTurn"}}</button>
+                <button type="button" class="wd-link" data-action="reseat"><i class="fa-solid fa-users"></i> {{localize "DHWD.Villain.Reseat"}}</button>
+            </div>
+            {{/if}}{{/if}}
+        </section>
+        {{/unless}}
+
+        <div class="wd-side-foot">
+            {{{rulesLink}}}
+            {{#if isGM}}
+            <button type="button" class="wd-link" data-action="summon"><i class="fa-solid fa-bullhorn"></i> {{localize "DHWD.Summon"}}</button>
+            {{/if}}
+        </div>
+    </aside>
+
+    <main class="wd-main vb-main">
+        {{#if (eq phase "setup")}}
+        <section class="vb-setup">
+            <header class="wd-title">
+                <span class="wd-kicker">{{localize "DHWD.Villain.SessionZero"}}</span>
+                <h1>{{localize "DHWD.Villain.SetupTitle"}}</h1>
+                <p>{{localize "DHWD.Villain.SetupIntro"}}</p>
+            </header>
+            {{#if isGM}}
+            <div class="vb-setup-grid">
+                <fieldset>
+                    <legend>{{localize "DHWD.Villain.Method"}}</legend>
+                    <button type="button" class="vb-mode {{#unless isRoll}}active{{/unless}}" data-action="mode" data-mode="slips">
+                        <i class="fa-solid fa-scroll"></i><strong>{{localize "DHWD.Villain.Mode.slips"}}</strong><span>{{localize "DHWD.Villain.Mode.slipsHint"}}</span>
+                    </button>
+                    <button type="button" class="vb-mode {{#if isRoll}}active{{/if}}" data-action="mode" data-mode="roll">
+                        <i class="fa-solid fa-dice"></i><strong>{{localize "DHWD.Villain.Mode.roll"}}</strong><span>{{localize "DHWD.Villain.Mode.rollHint"}}</span>
+                    </button>
+                    <label class="vb-total">
+                        <span>{{#if isRoll}}{{localize "DHWD.Villain.TotalRoll"}}{{else}}{{localize "DHWD.Villain.TotalSlips"}}{{/if}}</span>
+                        <input type="range" name="total" min="5" max="{{max}}" step="1" value="{{total}}" />
+                        <output class="vb-total-out">{{total}}</output>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>{{localize "DHWD.Villain.Seating"}}</legend>
+                    <p class="wd-hint">{{localize "DHWD.Villain.SeatingHint"}}</p>
+                    <ul class="vb-seats">
+                        {{#each seats}}
+                        <li class="{{#if seated}}seated{{/if}} {{#unless active}}away{{/unless}}" style="--who: {{color}}">
+                            <button type="button" class="vb-seat-toggle" data-action="seat" data-user="{{id}}"><i class="fa-{{#if seated}}solid fa-square-check{{else}}regular fa-square{{/if}}"></i></button>
+                            <img src="{{avatar}}" alt="" />
+                            <span>{{name}}{{#if isGM}} <em>(GM)</em>{{/if}}</span>
+                            {{#if seated}}
+                            <button type="button" class="wd-icon-btn" data-action="moveSeat" data-user="{{id}}" data-dir="-1" {{#if first}}disabled{{/if}}><i class="fa-solid fa-chevron-up"></i></button>
+                            <button type="button" class="wd-icon-btn" data-action="moveSeat" data-user="{{id}}" data-dir="1" {{#if last}}disabled{{/if}}><i class="fa-solid fa-chevron-down"></i></button>
+                            {{/if}}
+                        </li>
+                        {{/each}}
+                    </ul>
+                </fieldset>
+            </div>
+            <button type="button" class="wd-btn primary big" data-action="start" {{#unless seatedCount}}disabled{{/unless}}><i class="fa-solid fa-crown"></i> {{localize "DHWD.Villain.Start"}}</button>
+            {{else}}
+            <p class="vb-wait"><i class="fa-solid fa-hourglass-half"></i> {{localize "DHWD.Villain.WaitSetup"}}</p>
+            {{/if}}
+        </section>
+        {{/if}}
+
+        {{#if (eq phase "play")}}
+        <section class="vb-table {{#if current}}has-prompt{{/if}}">
+            <div class="vb-turn">
+                {{#if current}}
+                <span style="--who: {{current.by.color}}"><img src="{{current.by.avatar}}" alt="" /> {{localize "DHWD.Villain.Answering" name=current.by.name}}</span>
+                {{else if myTurn}}
+                <span class="mine"><i class="fa-solid fa-hand-sparkles"></i> {{#if isRoll}}{{localize "DHWD.Villain.YourTurnRoll"}}{{else}}{{localize "DHWD.Villain.YourTurn"}}{{/if}}</span>
+                {{else if turn}}
+                <span style="--who: {{turn.color}}"><img src="{{turn.avatar}}" alt="" /> {{localize "DHWD.Villain.TheirTurn" name=turn.name}}</span>
+                {{/if}}
+            </div>
+
+            {{#unless isRoll}}
+            <div class="vb-slips">
+                {{#each slips}}
+                <button type="button" class="vb-slip" data-action="draw" data-n="{{n}}" style="left: {{x}}%; top: {{y}}%; --rot: {{rot}}deg" {{#unless canDraw}}disabled{{/unless}}>
+                    <span class="fold"></span>
+                </button>
+                {{/each}}
+            </div>
+            {{else}}
+            <div class="vb-roller">
+                <button type="button" class="wd-btn primary big" data-action="rollPrompt" {{#unless canDraw}}disabled{{/unless}} {{#if rolling}}disabled{{/if}}>
+                    <i class="fa-solid fa-dice-d10"></i> {{localize "DHWD.Villain.Roll"}}
+                </button>
+                <p class="wd-hint">{{localize "DHWD.Villain.RollHint" n=usedCount}}</p>
+            </div>
+            {{/unless}}
+
+            {{#if current}}
+            <article class="vb-prompt {{#if current.fresh}}fresh{{/if}}" style="--who: {{current.by.color}}">
+                <header>
+                    <span class="vb-number">{{current.n}}</span>
+                    {{#if current.rolls}}<span class="wd-hint">{{localize "DHWD.Villain.Rerolled" rolls=current.rolls}}</span>{{/if}}
+                </header>
+                <p class="vb-question">{{current.prompt}}</p>
+
+                {{#if current.canAnswer}}
+                <textarea class="vb-answer" data-keep="answer-{{current.n}}" data-submit="answer" rows="4" placeholder="{{localize 'DHWD.Villain.AnswerPlaceholder'}}"></textarea>
+                <div class="vb-prompt-actions">
+                    <button type="button" class="wd-btn primary" data-action="answer"><i class="fa-solid fa-feather-pointed"></i> {{localize "DHWD.Villain.Answer"}}</button>
+                    {{#if current.passTargets.length}}
+                    <span class="vb-pass">
+                        <select name="passTo">{{#each current.passTargets}}<option value="{{id}}">{{name}}</option>{{/each}}</select>
+                        <button type="button" class="wd-btn" data-action="pass"><i class="fa-solid fa-share"></i> {{localize "DHWD.Villain.Pass"}}</button>
+                    </span>
+                    {{/if}}
+                    <button type="button" class="wd-btn subtle" data-action="discard"><i class="fa-solid fa-fire"></i> {{localize "DHWD.Villain.Discard"}}</button>
+                </div>
+                {{else}}
+                <p class="vb-thinking"><i class="fa-solid fa-feather fa-bounce"></i> {{localize "DHWD.Villain.Thinking" name=current.by.name}}</p>
+                {{/if}}
+
+                <section class="vb-followups">
+                    <span class="wd-kicker">{{localize "DHWD.Villain.FollowUps"}}</span>
+                    {{#each current.followUps}}
+                    <div class="vb-follow" style="--who: {{who.color}}">
+                        <p class="q"><strong>{{who.name}}:</strong> {{q}}
+                            {{#if canDrop}}<button type="button" class="wd-icon-btn" data-action="dropFollowUp" data-id="{{id}}"><i class="fa-solid fa-xmark"></i></button>{{/if}}</p>
+                        {{#if a}}<p class="a">{{a}}</p>{{/if}}
+                        {{#if canAnswer}}
+                        <div class="vb-inline">
+                            <input type="text" data-keep="fa-{{id}}" data-submit="followAnswer" data-id="{{id}}" value="{{a}}" placeholder="{{localize 'DHWD.Villain.FollowAnswerPlaceholder'}}" />
+                            <button type="button" class="wd-icon-btn" data-action="followAnswer" data-id="{{id}}"><i class="fa-solid fa-check"></i></button>
+                        </div>
+                        {{/if}}
+                    </div>
+                    {{/each}}
+                    <div class="vb-inline">
+                        <input type="text" data-keep="follow-{{current.n}}" data-submit="followUp" placeholder="{{localize 'DHWD.Villain.FollowUpPlaceholder'}}" />
+                        <button type="button" class="wd-btn small" data-action="followUp"><i class="fa-solid fa-circle-question"></i> {{localize "DHWD.Villain.Ask"}}</button>
+                    </div>
+                </section>
+            </article>
+            {{/if}}
+
+            {{#if isGM}}
+            <footer class="vb-gm-bar">
+                <button type="button" class="wd-btn" data-action="finish" {{#if current}}disabled{{/if}}><i class="fa-solid fa-flag-checkered"></i> {{localize "DHWD.Villain.Finish"}}</button>
+                <span class="spacer"></span>
+                <button type="button" class="wd-btn danger" data-action="reset"><i class="fa-solid fa-trash"></i> {{localize "DHWD.Villain.Reset"}}</button>
+            </footer>
+            {{/if}}
+        </section>
+        {{/if}}
+
+        {{#if (eq phase "done")}}
+        <section class="vb-done">
+            <header class="wd-title">
+                <span class="wd-kicker">{{localize "DHWD.Villain.DoneKicker"}}</span>
+                <h1>{{localize "DHWD.Villain.DoneTitle"}}</h1>
+                <p>{{localize "DHWD.Villain.DoneIntro" n=answered}}</p>
+            </header>
+            {{#if isGM}}
+            <div class="vb-done-actions">
+                <button type="button" class="wd-btn primary" data-action="journal"><i class="fa-solid fa-book-open"></i> {{localize "DHWD.Villain.WriteJournal"}}</button>
+                {{#if canResume}}<button type="button" class="wd-btn" data-action="resume"><i class="fa-solid fa-rotate-left"></i> {{localize "DHWD.Villain.Resume"}}</button>{{/if}}
+                <span class="spacer"></span>
+                <button type="button" class="wd-btn danger" data-action="reset"><i class="fa-solid fa-trash"></i> {{localize "DHWD.Villain.Reset"}}</button>
+            </div>
+            {{/if}}
+        </section>
+        {{/if}}
+    </main>
+
+    {{#unless (eq phase "setup")}}
+    <aside class="wd-side vb-log-side">
+        <header class="wd-heading"><i class="fa-solid fa-scroll"></i> {{localize "DHWD.Villain.Known"}}</header>
+        {{#if log.length}}
+        <ol class="vb-log">
+            {{#each log}}
+            <li class="{{#if discarded}}discarded{{/if}}" style="--who: {{who.color}}">
+                <p class="vb-log-q"><span class="vb-number small">{{n}}</span> {{prompt}}</p>
+                {{#if discarded}}
+                <p class="vb-log-a"><em>{{localize "DHWD.Villain.Discarded"}}</em></p>
+                {{else}}
+                <p class="vb-log-a">{{answer}}</p>
+                {{/if}}
+                {{#each followUps}}<p class="vb-log-f"><strong>{{who}}:</strong> {{q}}{{#if a}} <span>{{a}}</span>{{/if}}</p>{{/each}}
+                <footer><span class="wd-by">— {{who.name}}</span>
+                    {{#if ../isGM}}<button type="button" class="wd-icon-btn" data-action="editEntry" data-index="{{index}}" data-tooltip="DHWD.Villain.EditAnswer"><i class="fa-solid fa-pen"></i></button>{{/if}}</footer>
+            </li>
+            {{/each}}
+        </ol>
+        {{else}}
+        <p class="wd-hint vb-empty">{{localize "DHWD.Villain.NothingYet"}}</p>
+        {{/if}}
+    </aside>
+    {{/unless}}
+</div>

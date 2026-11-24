@@ -1,0 +1,183 @@
+<div class="wd-shell ns-shell phase-{{phase}}">
+    <aside class="wd-side ns-side">
+        <figure class="wd-portrait ns-portrait">
+            <img src="{{art.starReading}}" alt="" />
+            <figcaption>
+                <span class="wd-kicker">{{localize "DHWD.Sky.Place"}}</span>
+                <h2>{{localize "DHWD.Sky.Astromancer"}}</h2>
+            </figcaption>
+        </figure>
+
+        <ol class="wd-steps">
+            {{#each steps}}
+            <li class="{{#if active}}active{{/if}} {{#if done}}done{{/if}}"><span class="n">{{n}}</span>{{label}}</li>
+            {{/each}}
+        </ol>
+
+        <section class="ns-tray">
+            <header class="wd-heading"><i class="fa-solid fa-dice-d6"></i> {{localize "DHWD.Sky.Stars"}}</header>
+            <div class="ns-tray-dice">
+                {{#each dice}}
+                <div class="ns-die-slot">
+                    <div role="button" tabindex="0" class="ns-die {{#if selected}}selected{{/if}} {{#if placed}}placed{{/if}}" data-action="selectDie" data-die="{{id}}"
+                        data-tooltip="{{localize 'DHWD.Sky.RolledBy' name=who.name}}{{#if placedLabel}} · {{placedLabel}}{{/if}}" style="--who: {{who.color}}">
+                        <span class="ns-pips">{{#each pips}}<span class="pip {{#if this}}on{{/if}}"></span>{{/each}}</span>
+                    </div>
+                    {{#if ../isGM}}{{#unless ../revealed}}
+                    <button type="button" class="ns-die-reroll" data-action="rerollDie" data-die="{{id}}" data-tooltip="DHWD.Sky.Reroll"><i class="fa-solid fa-rotate"></i></button>
+                    {{/unless}}{{/if}}
+                </div>
+                {{/each}}
+                {{#each empty}}
+                <div class="ns-die-slot"><span class="ns-die empty"><i class="fa-solid fa-star"></i></span></div>
+                {{/each}}
+            </div>
+            {{#if canRoll}}
+            <div class="ns-roll-buttons">
+                <button type="button" class="wd-btn primary" data-action="rollOne"><i class="fa-solid fa-star"></i> {{localize "DHWD.Sky.RollOne"}}</button>
+                {{#if (gt left 1)}}
+                <button type="button" class="wd-btn" data-action="rollAll"><i class="fa-solid fa-stars"></i> {{localize "DHWD.Sky.RollAll" n=left}}</button>
+                {{/if}}
+            </div>
+            <p class="wd-hint">{{localize "DHWD.Sky.RollHint"}}</p>
+            {{else}}{{#unless revealed}}
+            <p class="wd-hint">{{#if isGM}}{{localize "DHWD.Sky.PlaceHint"}}{{else}}{{localize "DHWD.Sky.WaitHint"}}{{/if}}</p>
+            {{/unless}}{{/if}}
+        </section>
+
+        <div class="wd-side-foot">
+            {{{rulesLink}}}
+            {{#if isGM}}
+            <button type="button" class="wd-link" data-action="summon"><i class="fa-solid fa-bullhorn"></i> {{localize "DHWD.Summon"}}</button>
+            {{/if}}
+        </div>
+    </aside>
+
+    <main class="wd-main ns-main">
+        {{#if revealed}}
+        <nav class="wd-tabs">
+            <button type="button" class="{{#if (eq tab 'revelations')}}active{{/if}}" data-action="switchTab" data-tab="revelations"><i class="fa-solid fa-star-and-crescent"></i> {{localize "DHWD.Sky.Tab.Revelations"}}</button>
+            <button type="button" class="{{#if (eq tab 'sky')}}active{{/if}}" data-action="switchTab" data-tab="sky"><i class="fa-solid fa-table-cells"></i> {{localize "DHWD.Sky.Tab.Table"}}</button>
+            <button type="button" data-action="journal"><i class="fa-solid fa-book-open"></i> {{localize "DHWD.Sky.Journal.Open"}}</button>
+        </nav>
+        {{/if}}
+
+        {{#if (eq tab 'revelations')}}
+        <section class="ns-revelations {{#if justRevealed}}just-revealed{{/if}}">
+            {{#each revelations}}
+            <article class="ns-card ns-card-{{key}}" style="--i: {{@index}}">
+                <header>
+                    <span class="ns-card-die"><span class="ns-pips">{{#each pips}}<span class="pip {{#if this}}on{{/if}}"></span>{{/each}}</span></span>
+                    <span class="ns-card-title"><span class="wd-kicker">{{ordinal}}</span><strong><i class="{{icon}}"></i> {{label}}</strong></span>
+                </header>
+                <div class="ns-card-entry">{{{entryHTML}}}</div>
+                <p class="ns-card-rule">{{{ruleHTML}}}</p>
+
+                {{#if isAlly}}
+                <div class="ns-ally-hope">
+                    <span class="wd-kicker">{{localize "DHWD.Sky.AllyHope"}}</span>
+                    <div class="ns-hope-pips">
+                        {{#each ../allyHope}}<button type="button" class="ns-hope {{#if filled}}filled{{/if}}" data-action="spendHope" {{#unless filled}}disabled{{/unless}} data-tooltip="DHWD.Sky.SpendHope"><i class="fa-solid fa-diamond"></i></button>{{/each}}
+                        {{#if ../isGM}}<button type="button" class="wd-icon-btn" data-action="refillHope" data-tooltip="DHWD.Sky.RefillHope"><i class="fa-solid fa-rotate-left"></i></button>{{/if}}
+                    </div>
+                </div>
+                {{/if}}
+
+                {{#if isShowdown}}
+                <div class="ns-prepared {{#if ../allPrepared}}ready{{/if}}">
+                    <span class="wd-kicker">{{localize "DHWD.Sky.PreparedTitle"}}</span>
+                    <ul>
+                        {{#each ../prepared}}
+                        <li><button type="button" class="ns-check {{#if checked}}checked{{/if}}" data-action="prepare" data-key="{{key}}" {{#unless ../../isGM}}disabled{{/unless}}><i class="fa-{{#if checked}}solid fa-circle-check{{else}}regular fa-circle{{/if}}"></i> {{label}}</button></li>
+                        {{/each}}
+                    </ul>
+                    {{#if ../allPrepared}}<p class="ns-ready">{{localize "DHWD.Sky.AllPrepared"}}</p>{{/if}}
+                </div>
+                {{/if}}
+
+                {{#if isSecret}}
+                <div class="ns-secret">
+                    {{#if ../isGM}}
+                    <span class="wd-kicker">{{localize "DHWD.Sky.SecretsTitle" n=../secrets.length}}</span>
+                    {{#if ../secrets.length}}
+                    <ol class="ns-secrets-list">
+                        {{#each ../secrets}}
+                        <li><p>{{text}}</p><span class="wd-by" style="--who: {{who.color}}">— {{who.name}}</span>
+                            <button type="button" class="wd-icon-btn" data-action="forgetSecret" data-at="{{at}}" data-tooltip="DHWD.Sky.ForgetSecret"><i class="fa-solid fa-xmark"></i></button></li>
+                        {{/each}}
+                    </ol>
+                    {{else}}<p class="wd-hint">{{localize "DHWD.Sky.NoSecrets"}}</p>{{/if}}
+                    {{else}}
+                    <span class="wd-kicker">{{localize "DHWD.Sky.WhisperTitle"}}</span>
+                    <textarea data-keep="secret" rows="3" placeholder="{{localize 'DHWD.Sky.WhisperPlaceholder'}}"></textarea>
+                    <button type="button" class="wd-btn small" data-action="whisper"><i class="fa-solid fa-feather"></i> {{localize "DHWD.Sky.Whisper"}}</button>
+                    {{/if}}
+                </div>
+                {{/if}}
+            </article>
+            {{/each}}
+        </section>
+        {{else}}
+        <section class="ns-sky">
+            <div class="ns-table-wrap">
+                <svg class="ns-constellation" aria-hidden="true"></svg>
+                <table class="ns-table {{#if editing}}editing{{/if}}">
+                    <thead>
+                        <tr>
+                            <th class="ns-roll-h">{{localize "DHWD.Sky.Roll"}}</th>
+                            {{#each columns}}
+                            <th class="ns-col {{#if filled}}filled{{/if}}" data-action="column" data-col="{{key}}" data-drop-col="{{key}}">
+                                <span class="wd-kicker">{{ordinal}}</span>
+                                <span class="ns-col-label"><i class="{{icon}}"></i> {{label}}</span>
+                            </th>
+                            {{/each}}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each rows}}
+                        <tr class="{{#if rolled}}rolled{{/if}}">
+                            <th class="ns-row-h"><span class="ns-die mini"><span class="ns-pips">{{#each pips}}<span class="pip {{#if this}}on{{/if}}"></span>{{/each}}</span></span></th>
+                            {{#each cells}}
+                            <td data-tooltip="{{#if text}}{{text}}{{/if}}" class="ns-cell {{#if chosen}}chosen{{/if}} {{#if open}}open{{/if}} {{#if crowded}}crowded{{/if}} {{#if custom}}custom{{/if}}" data-action="cell" data-col="{{col}}" data-value="{{value}}" data-drop-col="{{col}}">
+                                {{#if ../../editing}}
+                                <textarea class="ns-cell-edit" data-col="{{col}}" data-value="{{value}}" rows="2">{{name}}</textarea>
+                                {{else}}
+                                <strong>{{name}}{{#if unique}}<sup>*</sup>{{/if}}</strong>
+                                {{#if text}}<span>{{text}}</span>{{/if}}
+                                {{/if}}
+                                {{#if die}}<span class="ns-die chosen-die" style="--who: {{die.who.color}}"><span class="ns-pips">{{#each die.pips}}<span class="pip {{#if this}}on{{/if}}"></span>{{/each}}</span></span>{{/if}}
+                            </td>
+                            {{/each}}
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+            {{#if crowded.length}}
+            <div class="ns-warnings">
+                {{#each crowded}}<p><i class="fa-solid fa-triangle-exclamation"></i> {{localize "DHWD.Sky.Crowded" place=place cols=labels}}</p>{{/each}}
+            </div>
+            {{/if}}
+
+            {{#if isGM}}{{#unless revealed}}
+            <footer class="ns-gm-bar">
+                <button type="button" class="wd-btn" data-action="autoAssign" {{#unless unplaced}}disabled{{/unless}}><i class="fa-solid fa-wand-magic-sparkles"></i> {{localize "DHWD.Sky.AutoAssign"}}</button>
+                <button type="button" class="wd-btn {{#if editing}}active{{/if}}" data-action="toggleEdit"><i class="fa-solid fa-pen"></i> {{localize "DHWD.Sky.EditTable"}}</button>
+                {{#if hasOverrides}}<button type="button" class="wd-btn" data-action="resetTable"><i class="fa-solid fa-book"></i> {{localize "DHWD.Sky.ResetTable"}}</button>{{/if}}
+                <button type="button" class="wd-btn" data-action="clearDice" {{#unless dice.length}}disabled{{/unless}}><i class="fa-solid fa-broom"></i> {{localize "DHWD.Sky.ClearDice"}}</button>
+                <span class="spacer"></span>
+                <button type="button" class="wd-btn reveal" data-action="reveal" {{#unless allAssigned}}disabled{{/unless}}><i class="fa-solid fa-star-and-crescent"></i> {{localize "DHWD.Sky.Reveal"}}</button>
+            </footer>
+            {{/unless}}{{/if}}
+            {{#if isGM}}{{#if revealed}}
+            <footer class="ns-gm-bar">
+                <button type="button" class="wd-btn" data-action="conceal"><i class="fa-solid fa-cloud-moon"></i> {{localize "DHWD.Sky.Conceal"}}</button>
+                <span class="spacer"></span>
+                <button type="button" class="wd-btn danger" data-action="reset"><i class="fa-solid fa-trash"></i> {{localize "DHWD.Sky.Reset"}}</button>
+            </footer>
+            {{/if}}{{/if}}
+        </section>
+        {{/if}}
+    </main>
+</div>

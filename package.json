@@ -1,0 +1,12 @@
+{
+  "name": "dh-weredragon",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build-packs.mjs",
+    "unpack": "for p in packs/*/; do n=$(basename $p); fvtt package unpack --in packs --out src/$n -n $n; done"
+  },
+  "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "^3.0.0"
+  }
+}

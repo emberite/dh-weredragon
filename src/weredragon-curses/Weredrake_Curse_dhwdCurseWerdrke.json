@@ -1,0 +1,88 @@
+{
+  "_id": "dhwdCurseWerdrke",
+  "name": "Weredrake Curse",
+  "type": "feature",
+  "img": "icons/creatures/abilities/dragon-breath-purple.webp",
+  "system": {
+    "description": "<p>Forlorne’s “Breath Weapon” turns people into weredrakes.</p><p>While under the <em>Weredrake Curse</em>, the target drops their equipment and loot and transforms into a @UUID[Compendium.dh-weredragon.weredragon-adversaries.Actor.dhwdWeredrake000]{Weredrake} adversary under the GM’s control. After this condition is cleared, the target retains no memory of their time as a weredrake.</p><p>A Cursed condition can be cleared only by magic from a spell, ritual, magic item, location, supernatural occurrence, higher power, or some combination of these options. Lady Lavender’s Longsword and the Zoetrope of the Bright Bacchanal both end curses.</p>",
+    "featureForm": "passive",
+    "actions": {},
+    "resource": null,
+    "attribution": {
+      "source": "Daggerheart: Hope & Fear",
+      "page": null,
+      "artist": ""
+    },
+    "gmNotes": "",
+    "granter": null,
+    "actorResources": []
+  },
+  "effects": [
+    {
+      "_id": "723iU39xsPzrZNnb",
+      "name": "Weredrake Curse",
+      "img": "icons/creatures/abilities/dragon-breath-purple.webp",
+      "type": "base",
+      "transfer": true,
+      "disabled": false,
+      "statuses": [
+        "weredrakeCurse"
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "showIcon": 1,
+      "sort": 0,
+      "flags": {},
+      "system": {
+        "changes": [],
+        "duration": {
+          "description": ""
+        },
+        "rangeDependence": null,
+        "stacking": null,
+        "targetDispositions": [],
+        "conditionals": []
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "start": null,
+      "folder": null,
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "daggerheart",
+        "systemVersion": "2.12.7",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null
+      },
+      "_key": "!items.effects!dhwdCurseWerdrke.723iU39xsPzrZNnb"
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "dh-weredragon": {
+      "curse": "weredrakeCurse"
+    }
+  },
+  "_stats": {
+    "coreVersion": "14.370",
+    "systemId": "daggerheart",
+    "systemVersion": "2.12.7",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "_key": "!items!dhwdCurseWerdrke"
+}

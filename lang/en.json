@@ -1,0 +1,232 @@
+{
+    "DHWD": {
+        "Menu": {
+            "Legend": "Reign of the Weredragon",
+            "Villain": "Villain Builder",
+            "NightSky": "Night Sky Reading"
+        },
+        "Summon": "Show to everyone",
+        "Summoned": "Opened for everyone at the table.",
+        "Notify": {
+            "NoHopeAndFear": "Reign of the Weredragon uses the art of the Daggerheart: Hope & Fear module (daggerheart-hope-and-fear). Activate it to see the art."
+        },
+        "Settings": {
+            "CurseConditions": {
+                "Name": "Curse conditions",
+                "Hint": "Add the Weredrake Curse and the Petrified Curse to the token status conditions. Forlorne's Breath Weapon and Stone-Cold Gaze apply them."
+            },
+            "CurseVisuals": {
+                "Name": "Show curses on tokens",
+                "Hint": "A creature under the Weredrake Curse takes the shape of a weredrake, and one under the Petrified Curse turns the color of stone. Clearing the curse restores the token."
+            },
+            "Transform": {
+                "Name": "Forlorne transforms her token",
+                "Hint": "Using Forlorne's Transform feature swaps her token between her Faun Form and Dragon Form, keeping her marked HP and Stress."
+            },
+            "RollsToChat": {
+                "Name": "Post app rolls to chat",
+                "Hint": "Post the Night Sky Reading dice and the Villain Builder rolls as chat messages. Off: they are only shown with Dice So Nice."
+            }
+        },
+        "Errors": {
+            "NoGM": "A GM needs to be connected for this.",
+            "Timeout": "The GM didn't answer in time. Try again."
+        },
+        "Refuse": {
+            "GMOnly": "Only the GM can do that.",
+            "BadValue": "That doesn't work here.",
+            "Sky": {
+                "AlreadyRevealed": "The stars have already spoken. The GM can conceal the reading to change it.",
+                "AllRolled": "All five stars have been rolled.",
+                "NotAllAssigned": "Place a die in every revelation first.",
+                "NotRevealed": "The reading hasn't been revealed yet.",
+                "NoAllyHope": "The ally's Hope is spent for this scene."
+            },
+            "Villain": {
+                "AlreadyStarted": "The Villain Builder is already under way.",
+                "NotPlaying": "The Villain Builder isn't running.",
+                "PromptOpen": "Finish the open prompt first.",
+                "NotYourTurn": "It isn't your turn.",
+                "Used": "That prompt has already been used.",
+                "NoPrompt": "No prompt is open.",
+                "NotYours": "Only the player answering this prompt (or the GM) can do that.",
+                "EmptyAnswer": "Write something first.",
+                "NothingLeft": "No prompts are left."
+            }
+        },
+        "Curse": {
+            "weredrakeCurse": {
+                "Name": "Weredrake Curse",
+                "Short": "Drops their equipment and loot and transforms into a Weredrake adversary under the GM's control. When cleared, they remember nothing of their time as a weredrake. Only magic can clear it."
+            },
+            "petrifiedCurse": {
+                "Name": "Petrified Curse",
+                "Short": "Turned to stone with everything they wear and carry: Restrained and Vulnerable, can't act, +10 to damage thresholds. Only magic can clear it."
+            },
+            "NoTargets": "Target the cursed creatures first.",
+            "NoneCursed": "None of your targets is cursed.",
+            "Broken": "{item} breaks the curse on {names}."
+        },
+        "Transform": {
+            "Missing": "Forlorne's other form isn't in the Weredragon Adversaries compendium.",
+            "NotForlorne": "Only Forlorne Lykona can transform like this.",
+            "SelectToken": "Select Forlorne's token first.",
+            "NoToken": "Forlorne needs a token on the scene to transform.",
+            "To": {
+                "faun": "The dragon's shape folds in on itself. <strong>Forlorne</strong> stands in her faun form once more.",
+                "dragon": "Scales burst through her skin. <strong>Forlorne</strong> takes the stolen shape of the dragon Sazanthe!"
+            }
+        },
+        "Sky": {
+            "Title": "Night Sky Reading",
+            "Place": "Heaven's Eye",
+            "Astromancer": "The Astromancer",
+            "RulesLink": "The Astromancer's Revelations",
+            "Step": {
+                "roll": "Roll the stars",
+                "read": "Read the sky",
+                "revealed": "Revelations"
+            },
+            "Stars": "The stars",
+            "RolledBy": "Rolled by {name}",
+            "Reroll": "Reroll this die",
+            "RollOne": "Roll a star",
+            "RollAll": "Roll {n} stars",
+            "RollHint": "Together, roll five d6. Each player can roll a star.",
+            "PlaceHint": "Click a lit cell to place a die with that number in its column, or drag a die onto a column. Click a placed die again to lift it out.",
+            "WaitHint": "The GM is reading the stars…",
+            "RollFlavor": "Night Sky Reading: a star for the Astromancer",
+            "NoDieForRow": "No die shows a {value}.",
+            "Roll": "Roll",
+            "Crowded": "{cols} both send the party to {place}. Spread out where they have to go.",
+            "AutoAssign": "Place the rest",
+            "EditTable": "Edit the table",
+            "ResetTable": "Back to the book's table",
+            "ClearDice": "Clear the dice",
+            "ClearDiceConfirm": "Take all dice off the sky and let the players roll again?",
+            "Reveal": "Reveal the reading",
+            "Conceal": "Conceal the reading",
+            "Reset": "New reading",
+            "ResetConfirm": "Start a new reading? The dice, the placements, the ally's Hope and the checklist are cleared. Edits to the table, the journal and the whispered secrets are kept.",
+            "Tab": {
+                "Revelations": "Revelations",
+                "Table": "The sky"
+            },
+            "Ordinal": {
+                "1": "First revelation",
+                "2": "Second revelation",
+                "3": "Third revelation",
+                "4": "Fourth revelation",
+                "5": "Fifth revelation"
+            },
+            "Col": {
+                "secret": "Secret's Location",
+                "ally": "Powerful Ally",
+                "key1": "Key to Victory 1",
+                "key2": "Key to Victory 2",
+                "showdown": "Showdown Location"
+            },
+            "Rule": {
+                "secret": "Here the party can learn a secret that could help them defeat Forlorne. Every player writes down one secret Forlorne is hiding; between sessions the GM picks one to inspire the secret the party will uncover.",
+                "ally": "This ally has a pool of <strong>3 Hope</strong> at the start of any scene that includes Forlorne as an adversary. A PC within Far range of the ally can spend a Hope from this pool as if it were their own. If the ally falls unconscious or dies, the pool can't be used.",
+                "key1": "An item with a defensive benefit against Forlorne. When Forlorne appears, a PC holding at least one of these items <strong>gains 1d4 Hope</strong>.",
+                "key2": "A weapon that can harm Forlorne. A PC wielding it gains a <strong>+1 bonus to their Proficiency</strong> for attacks against Forlorne.",
+                "showdown": "Where the party is most likely to face Forlorne in the final battle. If they arrive with the secret, the ally and both keys, Forlorne appears alone, and her <strong>Feed on Fear</strong> and <strong>Terrifying</strong> features aren't available while she's there."
+            },
+            "AllyHope": "The ally's Hope",
+            "SpendHope": "Spend a Hope from the ally's pool",
+            "RefillHope": "New scene with Forlorne: refill to 3",
+            "PreparedTitle": "Arriving prepared",
+            "Prepared": {
+                "secret": "The secret is known",
+                "ally": "The ally stands with them",
+                "key1": "Key to Victory 1 in hand",
+                "key2": "Key to Victory 2 in hand"
+            },
+            "AllPrepared": "Forlorne appears alone. Feed on Fear and Terrifying aren't available here.",
+            "WhisperTitle": "Whisper a secret",
+            "WhisperPlaceholder": "One secret Forlorne is hiding, about her history or her rule…",
+            "Whisper": "Whisper it to the GM",
+            "Whispered": "Your secret reached the GM.",
+            "SecretsTitle": "Whispered secrets ({n})",
+            "NoSecrets": "No player has whispered a secret yet.",
+            "ForgetSecret": "Remove this secret",
+            "NoJournal": "The reading hasn't been written down yet.",
+            "ChatTitle": "The Astromancer has read the stars",
+            "Journal": {
+                "Name": "The Astromancer's Reading",
+                "Open": "Open the reading",
+                "Art": "Heaven's Eye",
+                "Reading": "The Reading",
+                "Intro": "From the top of Heaven's Eye, the Astromancer gazes into the night sky and draws the party's attention to five constellations.",
+                "Rules": "The Astromancer's Revelations (Hope & Fear)",
+                "Secrets": "Whispered Secrets (GM)",
+                "SecretsIntro": "Secrets Forlorne is hiding, as the players imagine them. Pick one to inspire the secret the party will uncover."
+            }
+        },
+        "Villain": {
+            "Title": "Villain Builder",
+            "Kicker": "The Weredragon Queen",
+            "Queen": "Forlorne Lykona",
+            "RulesLink": "Building Forlorne collaboratively",
+            "SessionZero": "Session zero",
+            "SetupTitle": "Build Forlorne together",
+            "SetupIntro": "Before character creation, the table builds the weredragon queen. Go around the table: each player opens a prompt, reads it aloud and answers it. Others can ask follow-up questions, and a player can pass a prompt to someone else or discard it.",
+            "Method": "How prompts are chosen",
+            "Mode": {
+                "slips": "Folded slips",
+                "slipsHint": "Cut out, folded and scattered on the table. Each player picks one.",
+                "roll": "Roll table",
+                "rollHint": "Roll a d4 (tens) and a d10 (ones). Used prompts are rerolled."
+            },
+            "TotalSlips": "Slips on the table",
+            "TotalRoll": "Prompts to answer",
+            "Seating": "Around the table",
+            "SeatingHint": "Starting with the player to the GM's left. Untick anyone who isn't playing.",
+            "Start": "Begin",
+            "WaitSetup": "The GM is setting the table…",
+            "Progress": "{n} answered",
+            "SkipTurn": "Skip turn",
+            "Reseat": "Seat connected players",
+            "YourTurn": "Your turn: pick a slip from the table",
+            "YourTurnRoll": "Your turn: roll for a prompt",
+            "TheirTurn": "{name} picks the next prompt",
+            "Answering": "{name} answers",
+            "Roll": "Roll d4 + d10",
+            "RollHint": "{n} of 40 prompts used.",
+            "Rolled": "Villain Builder: prompt {n}",
+            "RolledUsed": "Villain Builder: {n} was already used, rolling again",
+            "Rerolled": "Already used: {rolls}",
+            "AnswerPlaceholder": "Read the prompt aloud, then answer it…",
+            "Answer": "Answer",
+            "Pass": "Pass to",
+            "Discard": "Discard",
+            "Thinking": "{name} is answering…",
+            "FollowUps": "Follow-up questions",
+            "FollowUpPlaceholder": "Ask a follow-up question…",
+            "FollowAnswerPlaceholder": "Answer (optional)…",
+            "Ask": "Ask",
+            "Finish": "Finish",
+            "Resume": "Back to the table",
+            "Reset": "Start over",
+            "ResetConfirm": "Clear every answer and start the Villain Builder over? A journal you already wrote is kept.",
+            "DoneKicker": "As the table tells it",
+            "DoneTitle": "The Weredragon Queen",
+            "DoneIntro": "The table answered {n} prompts. Now on to character creation.",
+            "WriteJournal": "Write to a journal",
+            "JournalWritten": "Written to the journal \"{name}\".",
+            "Known": "What Whelvia knows",
+            "Discarded": "Discarded",
+            "EditAnswer": "Edit the answer",
+            "Save": "Save",
+            "NothingYet": "No prompt answered yet.",
+            "NoSeats": "Seat at least one player.",
+            "Journal": {
+                "Name": "Forlorne Lykona, as the Table Tells It",
+                "Art": "Forlorne Lykona",
+                "Dossier": "The Weredragon Queen",
+                "Intro": "Built together at session zero with the Villain Builder."
+            }
+        }
+    }
+}
