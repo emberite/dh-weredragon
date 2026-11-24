@@ -2,7 +2,7 @@
 
 A Foundry VTT module for running the **Reign of the Weredragon** campaign frame from *Daggerheart: Hope & Fear*. The whole table builds Forlorne Lykona together with the **Villain Builder** and receives the Astromancer's **Night Sky Reading**. The GM gets compendiums for the weredragon queen, her weredrakes, the two curses and the curse-breaking Keys to Victory.
 
-![The Astromancer's revelations](docs/screenshots/07-sky-revelations.webp)
+![The Astromancer's revelations](docs/screenshots/07-sky-revelations-v2.webp)
 
 ## Requirements
 
@@ -35,9 +35,9 @@ Build the weredragon queen together before character creation, from the 40 promp
 
 | | |
 |---|---|
-| ![Choosing folded slips and seating the players](docs/screenshots/01-villain-setup.webp) | ![Folded prompt slips scattered on the table](docs/screenshots/02-villain-table.webp) |
+| ![Choosing folded slips and seating the players](docs/screenshots/01-villain-setup-v2.webp) | ![Folded prompt slips scattered on the table](docs/screenshots/02-villain-table-v2.webp) |
 | **Setup:** folded slips or the roll table, and who sits where. | **The table:** it's Isolde's turn to pick a slip. |
-| ![A player answering a prompt while another asks a follow-up](docs/screenshots/03-villain-prompt.webp) | ![The finished portrait of the weredragon queen](docs/screenshots/04-villain-done.webp) |
+| ![A player answering a prompt while another asks a follow-up](docs/screenshots/03-villain-prompt-v2.webp) | ![The finished portrait of the weredragon queen](docs/screenshots/04-villain-done-v2.webp) |
 | **A prompt:** Gravel answers while Isolde asks a follow-up. | **Done:** eight answers, ready to write to a journal. |
 
 ### Night Sky Reading (Heaven's Eye)
@@ -46,7 +46,7 @@ The Astromancer's reading of the five revelations.
 
 1. **Roll the stars:** the players collectively roll 5d6. Each player can roll a star, or roll all the remaining ones at once.
 2. **Read the sky (GM):** click a lit cell of the Night Sky Reading table to place a die showing that number in that revelation's column. You can also drag a die onto a column, or use **Place the rest**. The chosen cells are joined into a constellation. The app warns when two revelations send the party to the same location ("spread out where the PCs have to go"). **Edit the table** replaces any entry with your own after session zero.
-3. **Reveal:** the five revelations appear for everyone as cards with their rules. A chat card is posted and the journal **The Astromancer's Reading** is written.
+3. **Reveal:** the five revelations appear for everyone as cards with their rules. A chat card is posted and the journal **The Astromancer's Reading** is written, with one page per revelation after the Astromancer's art.
    - **First revelation:** each player whispers a secret Forlorne is hiding. The secrets land on a GM-only journal page, for the GM to pick one between sessions.
    - **Second revelation:** the powerful ally's pool of 3 Hope, which players spend by clicking. The GM refills it for each new scene with Forlorne.
    - **Fifth revelation:** a checklist (secret, ally, both keys). With all four, Forlorne appears alone, without Feed on Fear and Terrifying.
@@ -54,12 +54,16 @@ The Astromancer's reading of the five revelations.
 
 | | |
 |---|---|
-| ![Players rolling the stars](docs/screenshots/05-sky-rolling.webp) | ![The GM's dice placed in the table, joined into a constellation](docs/screenshots/06-sky-placed.webp) |
+| ![Players rolling the stars](docs/screenshots/05-sky-rolling-v2.webp) | ![The GM's dice placed in the table, joined into a constellation](docs/screenshots/06-sky-placed-v2.webp) |
 | **Roll the stars:** three of five dice rolled by the players. | **Read the sky:** the GM placed every die; the chosen cells form a constellation. |
+
+![The Astromancer's Reading journal open on the third revelation](docs/screenshots/09-reading-journal-v2.webp)
+
+The reading journal: one page per revelation, here Key to Victory 1 with the Zoetrope of the Bright Bacchanal.
 
 ### Compendiums
 
-![Forlorne Lykona's Dragon Form](docs/screenshots/08-forlorne.webp)
+![Forlorne Lykona's Dragon Form](docs/screenshots/08-forlorne-v2.webp)
 
 Under **Reign of the Weredragon** in the compendium sidebar, behind the campaign frame's cover art:
 

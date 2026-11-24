@@ -3,7 +3,7 @@
  * GM-only page) and the table's portrait of Forlorne from the Villain Builder.
  */
 import { ART, HF_PAGES, L, MODULE_ID } from './constants.mjs';
-import { PROMPTS, REVELATIONS } from './data.mjs';
+import { ITEM_IDS, PROMPTS, REVELATIONS } from './data.mjs';
 import { handle } from './relay.mjs';
 import { chosen } from './state.mjs';
 
@@ -53,27 +53,59 @@ export function revelationEntryHTML(entry) {
     return `<strong class="ns-entry-name">${name}</strong>${entry.text ? ` <span class="ns-entry-text">${esc(entry.text)}</span>` : ''}`;
 }
 
-export function readingHTML(state) {
-    const picks = chosen(state);
-    const parts = [`<p><em>${L('Sky.Journal.Intro')}</em></p>`];
-    REVELATIONS.forEach((r, i) => {
-        const pick = picks[r.key];
-        if (!pick) return;
-        parts.push(
-            `<h2>${L(`Sky.Ordinal.${i + 1}`)}: ${L(`Sky.Col.${r.key}`)}</h2>`,
-            `<p>${revelationEntryHTML(pick.entry)}</p>`,
-            `<blockquote><p>${revelationRule(r.key)}</p></blockquote>`
-        );
-    });
-    parts.push(`<p>@UUID[${HF_PAGES.revelations}]{${L('Sky.Journal.Rules')}}</p>`);
-    return parts.join('');
+/** Art of this module's own Keys to Victory, shown on their revelation page. */
+const KEY_ART = { [ITEM_IDS.longsword]: ART.sword, [ITEM_IDS.zoetrope]: ART.zoetrope };
+
+/** One journal page of the reading: the revelation's entry, its item and its rule. */
+export function revelationPageHTML(key, index, entry) {
+    const art = Object.entries(KEY_ART).find(([id]) => entry?.uuid?.endsWith(id))?.[1];
+    return [
+        `<p><em>${L(`Sky.Ordinal.${index + 1}`)}</em></p>`,
+        art ? `<img src="${art}" alt="" style="float: right; max-width: 35%; max-height: 320px; margin: 0 0 8px 12px; border: none" />` : '',
+        `<h2>${entry.uuid ? `@UUID[${entry.uuid}]{${esc(entry.name)}}` : esc(entry.name)}</h2>`,
+        entry.text ? `<p>${esc(entry.text)}</p>` : '',
+        `<blockquote><p>${revelationRule(key)}</p></blockquote>`,
+        `<p>@UUID[${HF_PAGES.revelations}]{${L('Sky.Journal.Rules')}}</p>`
+    ].join('');
 }
 
-/** Write (or rewrite) the reading journal. Before the reveal only the GM can open it. */
+/**
+ * Write (or rewrite) the reading journal: the Astromancer's art with the intro, one page per revelation,
+ * then the GM-only whispered secrets. Before the reveal only the GM can open it.
+ */
 export async function writeReading(state) {
     const entry = await ensureJournal('reading', L('Sky.Journal.Name'), { default: state.revealed ? OBSERVER : NONE });
-    await upsertPage(entry, 'art', { name: L('Sky.Journal.Art'), type: 'image', src: ART.starReading, sort: 0, title: { show: false, level: 1 } });
-    await upsertPage(entry, 'reading', { name: L('Sky.Journal.Reading'), type: 'text', 'text.content': readingHTML(state), sort: 100 });
+    await upsertPage(entry, 'art', {
+        name: L('Sky.Journal.Art'),
+        type: 'image',
+        src: ART.starReading,
+        sort: 0,
+        'image.caption': L('Sky.Journal.Intro'),
+        title: { show: false, level: 1 }
+    });
+    // Versions before 0.2.0 kept all five revelations on one page.
+    const old = entry.pages.filter(p => p.getFlag(MODULE_ID, 'page') === 'reading').map(p => p.id);
+    if (old.length) await entry.deleteEmbeddedDocuments('JournalEntryPage', old);
+
+    const picks = chosen(state);
+    for (const [i, r] of REVELATIONS.entries()) {
+        const pick = picks[r.key];
+        const key = `revelation-${r.key}`;
+        if (!pick?.entry) {
+            const stale = entry.pages.find(p => p.getFlag(MODULE_ID, 'page') === key);
+            if (stale) await stale.delete();
+            continue;
+        }
+        await upsertPage(entry, key, {
+            name: L(`Sky.Col.${r.key}`),
+            type: 'text',
+            'text.content': revelationPageHTML(r.key, i, pick.entry),
+            sort: 100 * (i + 1),
+            title: { show: true, level: 1 }
+        });
+    }
+    const secrets = entry.pages.find(p => p.getFlag(MODULE_ID, 'page') === 'secrets');
+    if (secrets && secrets.sort !== 900) await secrets.update({ sort: 900 });
     return entry;
 }
 
@@ -97,7 +129,7 @@ handle('whisperSecret', async ({ text }, from) => {
         name: L('Sky.Journal.Secrets'),
         type: 'text',
         'text.content': html,
-        sort: 200,
+        sort: 900,
         ownership: { default: NONE },
         [`flags.${MODULE_ID}.secrets`]: list
     });
