@@ -80,7 +80,8 @@
   to { opacity: 0.85; }
 }
 
-.dh-weredragon button {
+/* Only buttons in the content: the window header's buttons are Font Awesome icons. */
+:where(.dh-weredragon .window-content) button {
   font-family: var(--wd-font-body);
 }
 .dh-weredragon :is(input, textarea, select) {
