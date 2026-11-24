@@ -1512,13 +1512,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.wd-night-sky .ns-cell span {
+.wd-night-sky .ns-cell .ns-cell-text {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
-.wd-night-sky .ns-cell.chosen span {
+.wd-night-sky .ns-cell.chosen .ns-cell-text {
   -webkit-line-clamp: unset;
 }
 .wd-night-sky .ns-cell {
@@ -1534,10 +1534,10 @@
   display: block;
   margin-top: 2px;
 }
-.wd-night-sky .ns-cell span {
+.wd-night-sky .ns-cell .ns-cell-text {
   -webkit-line-clamp: 2;
 }
-.wd-night-sky .ns-cell.chosen span {
+.wd-night-sky .ns-cell.chosen .ns-cell-text {
   -webkit-line-clamp: 4;
 }
 .wd-night-sky .ns-cell {
